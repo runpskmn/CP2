@@ -1,2 +1,2 @@
 # cp2
-Computer Programming II
+Computer Programming Skill II
