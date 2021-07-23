@@ -1,5 +1,3 @@
-package com.amela;
-
 import java.util.ArrayList;
 
 public class BookStore {
