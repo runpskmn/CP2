@@ -1,31 +1,31 @@
 
 import java.util.Scanner;
 
-public class TrainTicket {
-    public static void main(String[] args){
+
+public class train {
+    public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int p = sc.nextInt();
         int k = sc.nextInt();
-        int[] A = new int[1000]; 
-       for(int i=0;i<k;++i){
+        int[] platform = new int[n]; //แทนสถานีรถไฟข้อมูลคือจำนวนที่นั่งที่ถูกจองไป
+        for(int i=0;i<k;++i){
             int x = sc.nextInt();
             int y = sc.nextInt();
             int z = sc.nextInt();
-            int type =0;
-            for(int j=x;j<y;j++){
-                if(A[j]+z>5){
-                    type = 1;
+            boolean canReserve = true; //เช็คว่าสามารถจองได้ไหม
+            for(int j=x;j<y;++j){ //วนทุกสถานีตั้งแต่สถานีต้นทาง - ปลายทางที่ต้องการจอง
+                if(platform[j]+z > p){ //หมายความว่าที่นั่งในสถานีบางสถานีที่เราจะจองมีที่นั่งไม่พอเลยจองไม่ได้
+                    canReserve = false;
                     break;
-                }else{
-                    A[j]+=z;
                 }
             }
-            if(type==0){
+            if(canReserve){
                 System.out.println("Y");
-            }else{
+                for(int j=x;j<y;++j)
+                    platform[j]+=z;
+            }else
                 System.out.println("N");
-            }
         }
-     }  
+    }
 }
